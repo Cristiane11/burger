@@ -1,0 +1,41 @@
+<h1>Burgers!</h1>
+
+<h2>What Burgers do You want to eat?</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#unless devoured}}
+  
+      <li>
+	{{burger_name}}
+	<button class="eat_burger" data-id="{{id}}" data-newsleep="{{devoured}}" action="/api/burgers/{{this.id}}?_method=PUT" method="POST" >
+	devoured	
+	</button>
+
+	<button class="delete-burger" data-id="{{this.id}}"action="/api/burgers/{{this.id}}?_method=DELETE" method="POST">DELETE!</button>
+</li>
+    {{/unless}}
+  {{/each}}
+  </ul>
+
+<h2>Burgers that was ordered</h2>
+
+<ul>
+  {{#each burgers}}
+    {{#if devoured}}
+   {{burger_name}}
+
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Burgers</h2>
+<form class="create-form" action="/api/burgers/{{this.id}}?_method=POST" method="POST">
+
+  <div class="form-group">
+    <label for="burgerss">Burger Name:</label>
+    <input type="text" id="burger2" name="name">
+  </div>
+
+  <button type="submit">Add Burger</button>
+</form>
